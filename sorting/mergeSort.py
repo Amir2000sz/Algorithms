@@ -13,9 +13,15 @@ def merge(A, p, q, r):
         if L[i] <= R[j]:
             A[k] = L[i]
             i += 1
+            if i == len(L): # this part added for implenting this algorithm without using the sentinel values
+                A[k+1:r+1] = R[j:]
+                break
         else:
             A[k] = R[j]
             j += 1
+            if j == len(R):
+                A[k+1:r+1] = L[i:]
+                break
 
 def mergeSort(arr):
     if len(arr) <= 1:   # base case
